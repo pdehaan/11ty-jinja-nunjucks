@@ -1,0 +1,54 @@
+jinja|nunjucks|description|notes
+abs|abs|Return the absolute value of the argument.|
+attr||Get an attribute of an object.|
+batch|batch|A filter that batches items. It works pretty much like slice just the other way round. It returns a list of lists with the given number of items.|
+capitalize|capitalize|Capitalize a value. The first character will be uppercase, all others lowercase.|
+center|center|Centers the value in a field of a given width.|
+default|default|If the value is undefined it will return the passed default value, otherwise the value of the variable.|(Jinja and Nunjucks: aliased as `d`)
+dictsort|dictsort|Sort a dict and yield (key, value) pairs.|
+|dump|Call <code>JSON.stringify()</code> on an object and dump the result into the template.|
+escape|escape|Replace the characters `&amp;`, `&lt;`, `&gt;`, `'`, and `&quot;` in the string with HTML-safe sequences. Use this if you need to display text that might contain such characters in HTML.|(Jinja and Nunjucks: aliased as `e`)
+filesizeformat||Format the value like a ‘human-readable’ file size (i.e. 13 kB, 4.1 MB, 102 Bytes, etc). Per default decimal prefixes are used (Mega, Giga, etc.), if the second parameter is set to True the binary prefixes are used (Mebi, Gibi).|
+first|first|Return the first item of a sequence.|
+float|float|Convert the value into a floating point number. If the conversion doesn’t work it will return 0.0. You can override this default using the first parameter.|
+forceescape|forceescape|Enforce HTML escaping. This will probably double escape variables.|
+format||Apply the given values to a printf-style format string, like <code>string % values</code>.|
+groupby|groupby|Group a sequence of objects by a common attribute.|
+indent|indent|Return a copy of the string with each line indented by 4 spaces. The first line and blank lines are not indented by default.|
+int|int|Convert the value into an integer. If the conversion doesn’t work it will return 0.|
+items||Return an iterator over the (key, value) items of a mapping.|
+join|join|Return a string which is the concatenation of the strings in the sequence. The separator between elements is an empty string per default.|
+last|last|Return the last item of a sequence.|
+length|length|Return the number of items in a container.|(Jinja: aliased as `count`)
+list|list|Convert the value into a list. If it was a string the returned list will be a list of characters.|
+lower|lower|Convert a value to lowercase.|
+map||Applies a filter on a sequence of objects or looks up an attribute. This is useful when dealing with lists of objects but you are really only interested in a certain value of it.|
+max||Return the largest item from the sequence.|
+min||Return the smallest item from the sequence.|
+|nl2br|Replace new lines with <code>&lt;br/&gt;</code> HTML elements.|
+pprint||Pretty print a variable. Useful for debugging.|
+random|random|Return a random item from the sequence.|
+reject|reject|Filters a sequence of objects by applying a test to each object, and rejecting the objects with the test succeeding.|
+rejectattr|rejectattr|Filters a sequence of objects by applying a test to the specified attribute of each object, and rejecting the objects with the test succeeding.|(Nunjucks: only the single-argument form)
+replace|replace|Return a copy of the value with all occurrences of a substring replaced with a new one.|
+reverse|reverse|Reverse the object or return an iterator that iterates over it the other way round.|
+round|round|Round the number to a given precision.|
+safe|safe|Mark the value as safe which means that in an environment with automatic escaping enabled this variable will not be escaped.|
+select|select|Filters a sequence of objects by applying a test to each object, and only selecting the objects with the test succeeding.|
+selectattr|selectattr|Filters a sequence of objects by applying a test to the specified attribute of each object, and only selecting the objects with the test succeeding.|(Nunjucks: only the single-argument form)
+slice|slice|Slice an iterator and return a list of lists containing those items.|
+sort|sort|Sort an iterable.|
+string|string|Convert an object to a string if it isn’t already.|
+striptags|striptags|Strip SGML/XML tags and replace adjacent whitespace by one space.|
+sum|sum|Returns the sum of a sequence of numbers plus the value of parameter <code>start</code> (which defaults to 0).|
+title|title|Return a titlecased version of the value. I.e. words will start with uppercase letters, all remaining characters are lowercase.|
+tojson||Serialize an object to a string of JSON, and mark it safe to render in HTML. This filter is only for use in HTML documents.|
+trim|trim|Strip leading and trailing characters, by default whitespace.|
+truncate|truncate|Return a truncated copy of the string. The length is specified with the first parameter which defaults to 255.|
+unique||Returns a list of unique items from the given iterable.|
+upper|upper|Convert a value to uppercase.|
+urlencode|urlencode|Quote data for use in a URL path or query using UTF-8.|
+urlize|urlize|Convert URLs in text into clickable links.|
+wordcount|wordcount|Count the words in that string.|
+wordwrap||Wrap a string to the given width. Existing newlines are treated as paragraphs to be wrapped separately.|
+xmlattr||Create an SGML/XML attribute string based on the items in a dict. All values that are neither <code>none</code> nor <code>undefined</code> are automatically escaped.|

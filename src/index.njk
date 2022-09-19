@@ -1,0 +1,13 @@
+---
+title: "Jinja <=> Nunjucks"
+---
+
+<h1>{{ title }}</h1>
+
+{% renderTemplate "njk,md", csvdata %}
+| [Jinja](https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters) | [Nunjucks](https://mozilla.github.io/nunjucks/templating.html#builtin-filters) | Description | Notes
+|----|----|----|----|
+{%- for f in filters %}
+| {{ f.jinja | filter_url("jinja") | safe }} | {{ f.nunjucks | filter_url("nunjucks") | safe }} | {{ f.description | safe }} | {{ f.notes | trim | safe }} |
+{%- endfor %}
+{% endrenderTemplate %}
