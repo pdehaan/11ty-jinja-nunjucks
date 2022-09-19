@@ -1,60 +1,334 @@
 
 <h1>Jinja &lt;=&gt; Nunjucks</h1>
 
-
-| [Jinja](https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters) | [Nunjucks](https://mozilla.github.io/nunjucks/templating.html#builtin-filters) | Description | Notes
-|----|----|----|----|
-| [`abs`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.abs) | [`abs`](https://mozilla.github.io/nunjucks/templating.html#abs) | Return the absolute value of the argument. |  |
-| [`attr`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.attr) | **n/a** | Get an attribute of an object. |  |
-| [`batch`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.batch) | [`batch`](https://mozilla.github.io/nunjucks/templating.html#batch) | A filter that batches items. It works pretty much like slice just the other way round. It returns a list of lists with the given number of items. |  |
-| [`capitalize`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.capitalize) | [`capitalize`](https://mozilla.github.io/nunjucks/templating.html#capitalize) | Capitalize a value. The first character will be uppercase, all others lowercase. |  |
-| [`center`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.center) | [`center`](https://mozilla.github.io/nunjucks/templating.html#center) | Centers the value in a field of a given width. |  |
-| [`default`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.default) | [`default`](https://mozilla.github.io/nunjucks/templating.html#default) | If the value is undefined it will return the passed default value, otherwise the value of the variable. | (Jinja and Nunjucks: aliased as `d`) |
-| [`dictsort`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.dictsort) | [`dictsort`](https://mozilla.github.io/nunjucks/templating.html#dictsort) | Sort a dict and yield (key, value) pairs. |  |
-| **n/a** | [`dump`](https://mozilla.github.io/nunjucks/templating.html#dump) | Call <code>JSON.stringify()</code> on an object and dump the result into the template. |  |
-| [`escape`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.escape) | [`escape`](https://mozilla.github.io/nunjucks/templating.html#escape) | Replace the characters `&amp;`, `&lt;`, `&gt;`, `'`, and `&quot;` in the string with HTML-safe sequences. Use this if you need to display text that might contain such characters in HTML. | (Jinja and Nunjucks: aliased as `e`) |
-| [`filesizeformat`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.filesizeformat) | **n/a** | Format the value like a ‘human-readable’ file size (i.e. 13 kB, 4.1 MB, 102 Bytes, etc). Per default decimal prefixes are used (Mega, Giga, etc.), if the second parameter is set to True the binary prefixes are used (Mebi, Gibi). |  |
-| [`first`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.first) | [`first`](https://mozilla.github.io/nunjucks/templating.html#first) | Return the first item of a sequence. |  |
-| [`float`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.float) | [`float`](https://mozilla.github.io/nunjucks/templating.html#float) | Convert the value into a floating point number. If the conversion doesn’t work it will return 0.0. You can override this default using the first parameter. |  |
-| [`forceescape`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.forceescape) | [`forceescape`](https://mozilla.github.io/nunjucks/templating.html#forceescape) | Enforce HTML escaping. This will probably double escape variables. |  |
-| [`format`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.format) | **n/a** | Apply the given values to a printf-style format string, like <code>string % values</code>. |  |
-| [`groupby`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.groupby) | [`groupby`](https://mozilla.github.io/nunjucks/templating.html#groupby) | Group a sequence of objects by a common attribute. |  |
-| [`indent`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.indent) | [`indent`](https://mozilla.github.io/nunjucks/templating.html#indent) | Return a copy of the string with each line indented by 4 spaces. The first line and blank lines are not indented by default. |  |
-| [`int`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.int) | [`int`](https://mozilla.github.io/nunjucks/templating.html#int) | Convert the value into an integer. If the conversion doesn’t work it will return 0. |  |
-| [`items`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.items) | **n/a** | Return an iterator over the (key, value) items of a mapping. |  |
-| [`join`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.join) | [`join`](https://mozilla.github.io/nunjucks/templating.html#join) | Return a string which is the concatenation of the strings in the sequence. The separator between elements is an empty string per default. |  |
-| [`last`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.last) | [`last`](https://mozilla.github.io/nunjucks/templating.html#last) | Return the last item of a sequence. |  |
-| [`length`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.length) | [`length`](https://mozilla.github.io/nunjucks/templating.html#length) | Return the number of items in a container. | (Jinja: aliased as `count`) |
-| [`list`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.list) | [`list`](https://mozilla.github.io/nunjucks/templating.html#list) | Convert the value into a list. If it was a string the returned list will be a list of characters. |  |
-| [`lower`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.lower) | [`lower`](https://mozilla.github.io/nunjucks/templating.html#lower) | Convert a value to lowercase. |  |
-| [`map`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.map) | **n/a** | Applies a filter on a sequence of objects or looks up an attribute. This is useful when dealing with lists of objects but you are really only interested in a certain value of it. |  |
-| [`max`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.max) | **n/a** | Return the largest item from the sequence. |  |
-| [`min`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.min) | **n/a** | Return the smallest item from the sequence. |  |
-| **n/a** | [`nl2br`](https://mozilla.github.io/nunjucks/templating.html#nl2br) | Replace new lines with <code>&lt;br/&gt;</code> HTML elements. |  |
-| [`pprint`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.pprint) | **n/a** | Pretty print a variable. Useful for debugging. |  |
-| [`random`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.random) | [`random`](https://mozilla.github.io/nunjucks/templating.html#random) | Return a random item from the sequence. |  |
-| [`reject`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.reject) | [`reject`](https://mozilla.github.io/nunjucks/templating.html#reject) | Filters a sequence of objects by applying a test to each object, and rejecting the objects with the test succeeding. |  |
-| [`rejectattr`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.rejectattr) | [`rejectattr`](https://mozilla.github.io/nunjucks/templating.html#rejectattr) | Filters a sequence of objects by applying a test to the specified attribute of each object, and rejecting the objects with the test succeeding. | (Nunjucks: only the single-argument form) |
-| [`replace`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.replace) | [`replace`](https://mozilla.github.io/nunjucks/templating.html#replace) | Return a copy of the value with all occurrences of a substring replaced with a new one. |  |
-| [`reverse`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.reverse) | [`reverse`](https://mozilla.github.io/nunjucks/templating.html#reverse) | Reverse the object or return an iterator that iterates over it the other way round. |  |
-| [`round`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.round) | [`round`](https://mozilla.github.io/nunjucks/templating.html#round) | Round the number to a given precision. |  |
-| [`safe`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.safe) | [`safe`](https://mozilla.github.io/nunjucks/templating.html#safe) | Mark the value as safe which means that in an environment with automatic escaping enabled this variable will not be escaped. |  |
-| [`select`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.select) | [`select`](https://mozilla.github.io/nunjucks/templating.html#select) | Filters a sequence of objects by applying a test to each object, and only selecting the objects with the test succeeding. |  |
-| [`selectattr`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.selectattr) | [`selectattr`](https://mozilla.github.io/nunjucks/templating.html#selectattr) | Filters a sequence of objects by applying a test to the specified attribute of each object, and only selecting the objects with the test succeeding. | (Nunjucks: only the single-argument form) |
-| [`slice`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.slice) | [`slice`](https://mozilla.github.io/nunjucks/templating.html#slice) | Slice an iterator and return a list of lists containing those items. |  |
-| [`sort`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.sort) | [`sort`](https://mozilla.github.io/nunjucks/templating.html#sort) | Sort an iterable. |  |
-| [`string`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.string) | [`string`](https://mozilla.github.io/nunjucks/templating.html#string) | Convert an object to a string if it isn’t already. |  |
-| [`striptags`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.striptags) | [`striptags`](https://mozilla.github.io/nunjucks/templating.html#striptags) | Strip SGML/XML tags and replace adjacent whitespace by one space. |  |
-| [`sum`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.sum) | [`sum`](https://mozilla.github.io/nunjucks/templating.html#sum) | Returns the sum of a sequence of numbers plus the value of parameter <code>start</code> (which defaults to 0). |  |
-| [`title`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.title) | [`title`](https://mozilla.github.io/nunjucks/templating.html#title) | Return a titlecased version of the value. I.e. words will start with uppercase letters, all remaining characters are lowercase. |  |
-| [`tojson`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.tojson) | **n/a** | Serialize an object to a string of JSON, and mark it safe to render in HTML. This filter is only for use in HTML documents. |  |
-| [`trim`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.trim) | [`trim`](https://mozilla.github.io/nunjucks/templating.html#trim) | Strip leading and trailing characters, by default whitespace. |  |
-| [`truncate`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.truncate) | [`truncate`](https://mozilla.github.io/nunjucks/templating.html#truncate) | Return a truncated copy of the string. The length is specified with the first parameter which defaults to 255. |  |
-| [`unique`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.unique) | **n/a** | Returns a list of unique items from the given iterable. |  |
-| [`upper`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.upper) | [`upper`](https://mozilla.github.io/nunjucks/templating.html#upper) | Convert a value to uppercase. |  |
-| [`urlencode`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.urlencode) | [`urlencode`](https://mozilla.github.io/nunjucks/templating.html#urlencode) | Quote data for use in a URL path or query using UTF-8. |  |
-| [`urlize`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.urlize) | [`urlize`](https://mozilla.github.io/nunjucks/templating.html#urlize) | Convert URLs in text into clickable links. |  |
-| [`wordcount`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.wordcount) | [`wordcount`](https://mozilla.github.io/nunjucks/templating.html#wordcount) | Count the words in that string. |  |
-| [`wordwrap`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.wordwrap) | **n/a** | Wrap a string to the given width. Existing newlines are treated as paragraphs to be wrapped separately. |  |
-| [`xmlattr`](https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.xmlattr) | **n/a** | Create an SGML/XML attribute string based on the items in a dict. All values that are neither <code>none</code> nor <code>undefined</code> are automatically escaped. |  |
+<table>
+<thead>
+<tr>
+<th><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters">Jinja</a></th>
+<th><a href="https://mozilla.github.io/nunjucks/templating.html#builtin-filters">Nunjucks</a></th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.abs"><code>abs</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#abs"><code>abs</code></a></td>
+<td>Return the absolute value of the argument.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.attr"><code>attr</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Get an attribute of an object.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.batch"><code>batch</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#batch"><code>batch</code></a></td>
+<td>A filter that batches items. It works pretty much like slice just the other way round. It returns a list of lists with the given number of items.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.capitalize"><code>capitalize</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#capitalize"><code>capitalize</code></a></td>
+<td>Capitalize a value. The first character will be uppercase, all others lowercase.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.center"><code>center</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#center"><code>center</code></a></td>
+<td>Centers the value in a field of a given width.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.default"><code>default</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#default"><code>default</code></a></td>
+<td>If the value is undefined it will return the passed default value, otherwise the value of the variable.</td>
+<td>(Jinja and Nunjucks: aliased as <code>d</code>)</td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.dictsort"><code>dictsort</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#dictsort"><code>dictsort</code></a></td>
+<td>Sort a dict and yield (key, value) pairs.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>n/a</strong></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#dump"><code>dump</code></a></td>
+<td>Call <code>JSON.stringify()</code> on an object and dump the result into the template.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.escape"><code>escape</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#escape"><code>escape</code></a></td>
+<td>Replace the characters <code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;gt;</code>, <code>'</code>, and <code>&amp;quot;</code> in the string with HTML-safe sequences. Use this if you need to display text that might contain such characters in HTML.</td>
+<td>(Jinja and Nunjucks: aliased as <code>e</code>)</td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.filesizeformat"><code>filesizeformat</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Format the value like a ‘human-readable’ file size (i.e. 13 kB, 4.1 MB, 102 Bytes, etc). Per default decimal prefixes are used (Mega, Giga, etc.), if the second parameter is set to True the binary prefixes are used (Mebi, Gibi).</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.first"><code>first</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#first"><code>first</code></a></td>
+<td>Return the first item of a sequence.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.float"><code>float</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#float"><code>float</code></a></td>
+<td>Convert the value into a floating point number. If the conversion doesn’t work it will return 0.0. You can override this default using the first parameter.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.forceescape"><code>forceescape</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#forceescape"><code>forceescape</code></a></td>
+<td>Enforce HTML escaping. This will probably double escape variables.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.format"><code>format</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Apply the given values to a printf-style format string, like <code>string % values</code>.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.groupby"><code>groupby</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#groupby"><code>groupby</code></a></td>
+<td>Group a sequence of objects by a common attribute.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.indent"><code>indent</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#indent"><code>indent</code></a></td>
+<td>Return a copy of the string with each line indented by 4 spaces. The first line and blank lines are not indented by default.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.int"><code>int</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#int"><code>int</code></a></td>
+<td>Convert the value into an integer. If the conversion doesn’t work it will return 0.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.items"><code>items</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Return an iterator over the (key, value) items of a mapping.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.join"><code>join</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#join"><code>join</code></a></td>
+<td>Return a string which is the concatenation of the strings in the sequence. The separator between elements is an empty string per default.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.last"><code>last</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#last"><code>last</code></a></td>
+<td>Return the last item of a sequence.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.length"><code>length</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#length"><code>length</code></a></td>
+<td>Return the number of items in a container.</td>
+<td>(Jinja: aliased as <code>count</code>)</td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.list"><code>list</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#list"><code>list</code></a></td>
+<td>Convert the value into a list. If it was a string the returned list will be a list of characters.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.lower"><code>lower</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#lower"><code>lower</code></a></td>
+<td>Convert a value to lowercase.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.map"><code>map</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Applies a filter on a sequence of objects or looks up an attribute. This is useful when dealing with lists of objects but you are really only interested in a certain value of it.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.max"><code>max</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Return the largest item from the sequence.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.min"><code>min</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Return the smallest item from the sequence.</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>n/a</strong></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#nl2br"><code>nl2br</code></a></td>
+<td>Replace new lines with <code>&lt;br/&gt;</code> HTML elements.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.pprint"><code>pprint</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Pretty print a variable. Useful for debugging.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.random"><code>random</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#random"><code>random</code></a></td>
+<td>Return a random item from the sequence.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.reject"><code>reject</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#reject"><code>reject</code></a></td>
+<td>Filters a sequence of objects by applying a test to each object, and rejecting the objects with the test succeeding.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.rejectattr"><code>rejectattr</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#rejectattr"><code>rejectattr</code></a></td>
+<td>Filters a sequence of objects by applying a test to the specified attribute of each object, and rejecting the objects with the test succeeding.</td>
+<td>(Nunjucks: only the single-argument form)</td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.replace"><code>replace</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#replace"><code>replace</code></a></td>
+<td>Return a copy of the value with all occurrences of a substring replaced with a new one.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.reverse"><code>reverse</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#reverse"><code>reverse</code></a></td>
+<td>Reverse the object or return an iterator that iterates over it the other way round.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.round"><code>round</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#round"><code>round</code></a></td>
+<td>Round the number to a given precision.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.safe"><code>safe</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#safe"><code>safe</code></a></td>
+<td>Mark the value as safe which means that in an environment with automatic escaping enabled this variable will not be escaped.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.select"><code>select</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#select"><code>select</code></a></td>
+<td>Filters a sequence of objects by applying a test to each object, and only selecting the objects with the test succeeding.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.selectattr"><code>selectattr</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#selectattr"><code>selectattr</code></a></td>
+<td>Filters a sequence of objects by applying a test to the specified attribute of each object, and only selecting the objects with the test succeeding.</td>
+<td>(Nunjucks: only the single-argument form)</td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.slice"><code>slice</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#slice"><code>slice</code></a></td>
+<td>Slice an iterator and return a list of lists containing those items.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.sort"><code>sort</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#sort"><code>sort</code></a></td>
+<td>Sort an iterable.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.string"><code>string</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#string"><code>string</code></a></td>
+<td>Convert an object to a string if it isn’t already.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.striptags"><code>striptags</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#striptags"><code>striptags</code></a></td>
+<td>Strip SGML/XML tags and replace adjacent whitespace by one space.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.sum"><code>sum</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#sum"><code>sum</code></a></td>
+<td>Returns the sum of a sequence of numbers plus the value of parameter <code>start</code> (which defaults to 0).</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.title"><code>title</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#title"><code>title</code></a></td>
+<td>Return a titlecased version of the value. I.e. words will start with uppercase letters, all remaining characters are lowercase.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.tojson"><code>tojson</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Serialize an object to a string of JSON, and mark it safe to render in HTML. This filter is only for use in HTML documents.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.trim"><code>trim</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#trim"><code>trim</code></a></td>
+<td>Strip leading and trailing characters, by default whitespace.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.truncate"><code>truncate</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#truncate"><code>truncate</code></a></td>
+<td>Return a truncated copy of the string. The length is specified with the first parameter which defaults to 255.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.unique"><code>unique</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Returns a list of unique items from the given iterable.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.upper"><code>upper</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#upper"><code>upper</code></a></td>
+<td>Convert a value to uppercase.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.urlencode"><code>urlencode</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#urlencode"><code>urlencode</code></a></td>
+<td>Quote data for use in a URL path or query using UTF-8.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.urlize"><code>urlize</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#urlize"><code>urlize</code></a></td>
+<td>Convert URLs in text into clickable links.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.wordcount"><code>wordcount</code></a></td>
+<td><a href="https://mozilla.github.io/nunjucks/templating.html#wordcount"><code>wordcount</code></a></td>
+<td>Count the words in that string.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.wordwrap"><code>wordwrap</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Wrap a string to the given width. Existing newlines are treated as paragraphs to be wrapped separately.</td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://jinja.palletsprojects.com/en/3.1.x/templates/#jinja-filters.xmlattr"><code>xmlattr</code></a></td>
+<td><strong>n/a</strong></td>
+<td>Create an SGML/XML attribute string based on the items in a dict. All values that are neither <code>none</code> nor <code>undefined</code> are automatically escaped.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 

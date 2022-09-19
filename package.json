@@ -1,20 +1,28 @@
 {
   "name": "11ty-jinja-nunjucks",
-  "version": "1.0.0",
   "description": "",
-  "main": ".eleventy.js",
-  "scripts": {
-    "build": "eleventy",
-    "prebuild": "rm -rf www",
-    "postbuild": "# npx prettier www --write --loglevel=warn",
-    "serve": "npm run build -- --serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "version": "1.0.0",
   "author": "Peter deHaan <peter@deseloper.com>",
-  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/pdehaan/11ty-jinja-nunjucks/issues"
+  },
   "devDependencies": {
     "@11ty/eleventy": "^1.0.2",
     "csv-parse": "^5.3.0"
+  },
+  "homepage": "https://github.com/pdehaan/11ty-jinja-nunjucks#readme",
+  "keywords": [],
+  "license": "MPL-2.0",
+  "main": ".eleventy.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdehaan/11ty-jinja-nunjucks.git"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "postbuild": "# npx prettier www --write --loglevel=warn",
+    "prebuild": "rm -rf www",
+    "serve": "npm run build -- --serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
